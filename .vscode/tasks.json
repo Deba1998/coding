@@ -1,50 +1,41 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "label": "build hello world",
-        "type": "shell",
-        "command": "g++  \"${file}\"",
-        "presentation": {
-          //"reveal": "silent",
-          "focus": true,
-          "echo": false,
-          "showReuseMessage": true,
-        },
-        
-        "args": [
-          //"-g","-o","first","first.cpp",
-          //"&&","a"
-        ],
-        
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        },
-        "problemMatcher": []
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build hello world",
+      "type": "shell",
+      "command": "git add . && git commit -m \"x\" && git push origin master",
+      "presentation": {
+        "focus": true,
+        "echo": false,
+        "showReuseMessage": true
       },
-
-      {
-        
-        "label": "build-run",
-        "command": "g++  \"${file}\"", // Could be any other shell command
-        "args": ["&&", "a"],
-        "type": "shell",
-        "presentation": {
-          //"reveal": "silent",
-          "focus": true,
-          "echo": true,
-          "showReuseMessage": true,
-        },
-        "group": {
-          "kind": "test",
-          "isDefault": true
-        },
+      "args": [],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "build-run-cpp",
+      "command": "g++  \"${file}\"",
+      "args": [
+        "&&",
+        "a"
+      ],
+      "type": "shell",
+      "presentation": {
+        "focus": true,
+        "echo": false,
+        "showReuseMessage": true
       },
-      
-    ]
-    
-  } 
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+  
+} 
 
 
 
