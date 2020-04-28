@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build hello world",
+      "label": "git upload",
       "type": "shell",
       "command": "git add . && git commit -m \"x\" && git push origin master",
       "presentation": {
