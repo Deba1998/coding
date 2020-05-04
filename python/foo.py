@@ -1,23 +1,19 @@
-def lcs(i, j, count) :  
-      
-    if (i == 0 or j == 0) :  
-        return count  
-          
-    if (X[i - 1] == Y[j - 1]) : 
-        count = lcs(i - 1, j - 1, count + 1)  
-      
-    count = max(count, max(lcs( i, j - 1, 0),  
-                           lcs( i - 1, j, 0)))  
-  
-    return count 
-  
-# Driver code  
-if __name__ == "__main__" : 
-  
-    X = "abracadabra"
-    Y = "avadakedavra"
-  
-    n = len(X) 
-    m = len(Y) 
-  
-    print(lcs(n, m, 0))  
+def edis(s,t):
+    m=len(s)
+    n=len(t)
+    dp=[[0 for i in range(n+1)] for j in range(m+1)]
+    for i in range(m+1):
+        for j in range(n+1):
+            if i==0:
+                dp[i][j]=j
+            elif j==0:
+                dp[i][j]=i
+            else:
+                if s[i-1]==t[j-1]:
+                    dp[i][j]=dp[i-1][j-1]
+                else:
+                    dp[i][j]=1+min(dp[i-1][j],dp[i][j-1])
+    return(dp[m][n])
+a="abcde"
+b="gcef"
+print(edis(a,b))
