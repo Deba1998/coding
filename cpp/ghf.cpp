@@ -45,7 +45,7 @@ int solve(string s, int i, int j, bool ind){
 signed main(){
     //cout<<"Hello Ritoman"<<endl;
     memset(dp,-1,sizeof(dp));
-    string s = "F&F&T^T";
+    string s = "T^T^T^F|F&F^F|T^F^T";
     int n = s.size();
     int ans = solve(s,0,n-1, true);
     cout<<ans<<endl;

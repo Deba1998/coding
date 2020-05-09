@@ -7,6 +7,9 @@ def Solve(X, Y):
     return True
   if len(X)<=1:
     return False
+  keyi=X+" "+Y
+  if keyi in p:
+    return(p[keyi])
   n = len(X)
   flag = False
   for i in range(1, n):
@@ -15,10 +18,10 @@ def Solve(X, Y):
     if caseSwap or caseNoSwap:
       flag = True
       break
+  p[keyi]=flag
   return flag
-
-
 X = "great"
 Y = "rgate"
-out = Solve(X, Y)
-print('Y is scrambled string of X: ', out)
+p=dict()
+print(Solve(X,Y))
+print(p)

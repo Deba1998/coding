@@ -1,4 +1,4 @@
-def solve(s,i,j,ind):
+def solve(s,i,j,ind,x):
     if i>j:
         return(False)
     if i==j:
@@ -11,10 +11,10 @@ def solve(s,i,j,ind):
         return(x[keyi])
     count = 0
     for k in range(i+1, j, 2):
-        LT = solve(s, i, k-1, True)
-        LF = solve(s, i, k-1, False)
-        RT = solve(s, k+1, j, True)
-        RF = solve(s, k+1, j, False)
+        LT = solve(s, i, k-1, True,x)
+        LF = solve(s, i, k-1, False,x)
+        RT = solve(s, k+1, j, True,x)
+        RF = solve(s, k+1, j, False,x)
         if s[k] == '&':
             if ind==True:
                 count = count + LT * RT
@@ -33,9 +33,9 @@ def solve(s,i,j,ind):
         
     x[keyi] = count
     return count
-s = "F&F&T^T"
+s = "T^T^T^F|F&F^F|T^F^T"
 n=len(s)
 x=dict()
-print(solve(s,0,n-1,True))
-print(x)
+print(solve(s,0,n-1,True,x))
+
 
