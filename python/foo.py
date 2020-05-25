@@ -1,24 +1,11 @@
-def Solve(X, Y):
-  if len(X) != len(Y):
-    return False
-  if len(X) == 0 and len(Y) == 0:
-    return True
-  if X == Y:
-    return True
-  if len(X)<=1:
-    return False
-  n = len(X)
-  flag = False
-  for i in range(1, n):
-    caseSwap = (Solve(X[:i], Y[n-i:]) == True) and (Solve(X[i:], Y[:n-i]) == True)
-    caseNoSwap = (Solve(X[:i], Y[:i]) == True) and (Solve(X[i:], Y[i:]) == True)
-    if caseSwap or caseNoSwap:
-      flag = True
-      break
-  return flag
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+dp=[[0 for i in range(n+1)]for i in range(3)]
+for i in range(1,n+1):
+    dp[0][i]=a[i-1]+max(dp[1][i-1],dp[2][i-1])
+    dp[1][i]=b[i-1]+max(dp[0][i-1],dp[2][i-1])
+    dp[2][i]=max(dp[0][i-1],dp[1][i-1])
+print(max(dp[0][n],dp[1][n],dp[2][n]))
+    
 
-
-X = "great"
-Y = "rgate"
-out = Solve(X, Y)
-print('Y is scrambled string of X: ', out)

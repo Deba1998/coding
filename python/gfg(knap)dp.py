@@ -12,16 +12,15 @@
     return(dp[n][w])'''
 #top down
 def knap(n,w,val,weight):
+    if n==0 or w==0:
+        return(0)
     if dp[n][w]!=-1:
         return(dp[n][w])
+    elif weight[n-1]<=w:
+        dp[n][w]=max((val[n-1]+knap(n-1,w-weight[n-1],val,weight)),knap(n-1,w,val,weight))
     else:
-        if n==0 or w==0:
-            dp[n][w]=0
-        elif weight[n-1]<=w:
-            dp[n][w]=max((val[n-1]+knap(n-1,w-weight[n-1],val,weight)),knap(n-1,w,val,weight))
-        else:
-            dp[n][w]=knap(n-1,w,val,weight)
-        return(dp[n][w])
+        dp[n][w]=knap(n-1,w,val,weight)
+    return(dp[n][w])
 val=[60,100,120]
 l=[10,20,30]
 dp=[[-1 for i in range(50+1)]for i in range(3+1)]
